@@ -2,6 +2,8 @@
 
 A cute little circular progress view for iOS
 
+<img src="http://goosoftware.github.com/GSProgressView/GSProgressView-sample.png" width="960">
+
 # Usage instructions
 
 1. Drag GSProgressView.h and GSProgressView.m into your project.

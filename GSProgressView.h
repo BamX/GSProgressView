@@ -1,6 +1,5 @@
 //
 //  GSProgressView.h
-//  GSProgressIndicatorDemo
 //
 //  Created by Simon Whitaker on 14/11/2012.
 //  Copyright (c) 2012 Goo Software Ltd. All rights reserved.

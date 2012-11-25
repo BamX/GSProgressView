@@ -2,7 +2,7 @@
 
 A cute little circular progress view for iOS
 
-<img src="http://goosoftware.github.com/GSProgressView/GSProgressView-sample.png" width="960">
+<img src="http://goosoftware.github.com/GSProgressView/GSProgressView-sample.png" width="675">
 
 # Usage instructions
 

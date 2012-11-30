@@ -4,10 +4,18 @@ A cute little circular progress view for iOS
 
 <img src="http://goosoftware.github.com/GSProgressView/GSProgressView-sample.png" width="675">
 
-# Usage instructions
+# Installation
 
-1. Drag GSProgressView.h and GSProgressView.m into your project.
-2. Add a `GSProgressView` object to your view hierarchy and set its `progress` property to a value between 0.0 and 1.0
+Drag GSProgressView.h and GSProgressView.m into your project.
+
+# Serving suggestion
+
+```objective-c
+GSProgressView *pv = [[GSProgressView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+pv.color = [UIColor redColor];
+pv.progress = 0.6;
+[myView addSubview:pv];
+```
 
 # License
 

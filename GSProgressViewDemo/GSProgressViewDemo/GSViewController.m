@@ -18,7 +18,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    sranddev();
 
     float x = 1.0;
     for (GSProgressView *progressView in self.progressViews)

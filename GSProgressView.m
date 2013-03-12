@@ -10,13 +10,11 @@
 
 @implementation GSProgressView
 
-- (void)commonInit
-{
+- (void)commonInit {
     self.backgroundColor = [UIColor clearColor];
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         [self commonInit];
@@ -24,8 +22,7 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
+- (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         [self commonInit];
@@ -33,8 +30,7 @@
     return self;
 }
 
-- (void)setProgress:(CGFloat)progress
-{
+- (void)setProgress:(CGFloat)progress {
     if (progress > 1.0) progress = 1.0;
     
     if (progress != _progress) {
@@ -43,10 +39,9 @@
     }
 }
 
-- (void)drawRect:(CGRect)rect
-{
-    if (self.color == nil)
-        self.color = [UIColor blackColor];
+- (void)drawRect:(CGRect)rect {
+    if ([self color] == nil)
+        [self setColor:[UIColor blackColor]];
     
     CGPoint center = CGPointMake(rect.size.width/2, rect.size.height/2);
     CGFloat radius = MIN(rect.size.width, rect.size.height)/2;
@@ -60,12 +55,12 @@
     [path addArcWithCenter:center
                     radius:radius
                 startAngle:0 - M_PI_2 // zero degrees is east, not north, so subtract pi/2
-                  endAngle:2 * M_PI * self.progress - M_PI_2 // ditto
+                  endAngle:2 * M_PI * [self progress] - M_PI_2 // ditto
                  clockwise:YES];
     [path closePath];
     
     // If progress is 1.0, show a tick mark in the centre of the circle
-    if (self.progress == 1.0) {
+    if ([self progress] == 1.0) {
         /* 
          First draw a tick that looks like this:
          
@@ -103,30 +98,26 @@
     };
     path.usesEvenOddFillRule = YES;
     
-    [self.color setFill];
+    [[self color] setFill];
     [path fill];
 }
 
 #pragma mark - Accessibility
 
-- (BOOL)isAccessibilityElement
-{
+- (BOOL)isAccessibilityElement {
     return YES;
 }
 
-- (NSString *)accessibilityLabel
-{
+- (NSString *)accessibilityLabel {
     return NSLocalizedString(@"Progress", @"Accessibility label for GSProgressView");
 }
 
-- (NSString *)accessibilityValue
-{
+- (NSString *)accessibilityValue {
     // Report progress as a percentage, same as UISlider, UIProgressView
-    return [NSString stringWithFormat:@"%d%%", (int)round(self.progress * 100.0)];
+    return [NSString stringWithFormat:@"%d%%", (int)round([self progress] * 100.0)];
 }
 
-- (UIAccessibilityTraits)accessibilityTraits
-{
+- (UIAccessibilityTraits)accessibilityTraits {
     return UIAccessibilityTraitUpdatesFrequently;
 }
 

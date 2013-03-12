@@ -107,4 +107,27 @@
     [path fill];
 }
 
+#pragma mark - Accessibility
+
+- (BOOL)isAccessibilityElement
+{
+    return YES;
+}
+
+- (NSString *)accessibilityLabel
+{
+    return NSLocalizedString(@"Progress", @"Accessibility label for GSProgressView");
+}
+
+- (NSString *)accessibilityValue
+{
+    // Report progress as a percentage, same as UISlider, UIProgressView
+    return [NSString stringWithFormat:@"%d%%", (int)round(self.progress * 100.0)];
+}
+
+- (UIAccessibilityTraits)accessibilityTraits
+{
+    return UIAccessibilityTraitUpdatesFrequently;
+}
+
 @end

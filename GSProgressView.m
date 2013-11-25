@@ -95,8 +95,8 @@
 
         // Add fill color if it's set
         if (self.tickColor) {
-          [[self tickColor] setFill];
-          [tickPath fill];
+            [[self tickColor] setFill];
+            [tickPath fill];
         }
 
         // Add the tick path to the existing circle path

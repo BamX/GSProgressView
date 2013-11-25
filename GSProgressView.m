@@ -93,6 +93,12 @@
         CGFloat yOffset = rect.size.height/2 - radius;
         [tickPath applyTransform:CGAffineTransformMakeTranslation(xOffset, yOffset)];
 
+        // Add fill color if it's set
+        if (self.tickColor) {
+          [[self tickColor] setFill];
+          [tickPath fill];
+        }
+
         // Add the tick path to the existing circle path
         [path appendPath:tickPath];
     };

@@ -27,6 +27,7 @@
                                     brightness:x
                                          alpha:1.0];
         progressView.color = color;
+        progressView.tickColor = [UIColor greenColor];
         x -= 0.1;
     }
 }

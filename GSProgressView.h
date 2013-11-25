@@ -11,5 +11,6 @@
 
 @property (nonatomic) CGFloat progress;
 @property (strong, nonatomic) UIColor *color UI_APPEARANCE_SELECTOR;
+@property (strong, nonatomic) UIColor *tickColor UI_APPEARANCE_SELECTOR;
 
 @end

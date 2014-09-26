@@ -14,4 +14,6 @@
 @property (strong, nonatomic) UIColor *tickColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, getter=isDoneIconHidden) BOOL doneIconHidden;
 
+- (void)setProgress:(CGFloat)progress animated:(BOOL)animated;
+
 @end

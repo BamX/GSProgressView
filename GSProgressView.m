@@ -40,6 +40,22 @@
     }
 }
 
+- (void)setProgress:(CGFloat)progress animated:(BOOL)animated
+{
+    if (animated) {
+        [UIView animateWithDuration:0.2
+                              delay:0.0
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             self.progress = progress;
+                         }
+                         completion:nil];
+    }
+    else {
+        self.progress = progress;
+    }
+}
+
 - (void)drawRect:(CGRect)rect {
     if ([self color] == nil)
         [self setColor:[UIColor blackColor]];

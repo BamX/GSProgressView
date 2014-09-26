@@ -12,6 +12,7 @@
 
 - (void)commonInit {
     self.backgroundColor = [UIColor clearColor];
+    self.doneIconHidden = NO;
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -60,7 +61,7 @@
     [path closePath];
     
     // If progress is 1.0, show a tick mark in the centre of the circle
-    if ([self progress] == 1.0) {
+    if ([self progress] == 1.0 && self.doneIconHidden == NO) {
         /* 
          First draw a tick that looks like this:
          

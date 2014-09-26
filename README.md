@@ -8,6 +8,12 @@ A cute little circular progress view for iOS
 
 Drag GSProgressView.h and GSProgressView.m into your project.
 
+# CocoaPods
+
+```
+pod 'GSProgressView', :git=> 'https://github.com/goosoftware/GSProgressView.git'
+```
+
 # Serving suggestion
 
 ```objective-c

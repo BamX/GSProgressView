@@ -56,6 +56,14 @@
     }
 }
 
+- (void)setFailure:(BOOL)failure
+{
+    if (_failure != failure) {
+        _failure = failure;
+        [self setNeedsDisplay];
+    }
+}
+
 - (void)drawRect:(CGRect)rect {
     if ([self color] == nil)
         [self setColor:[UIColor blackColor]];
@@ -75,9 +83,41 @@
                   endAngle:2 * M_PI * [self progress] - M_PI_2 // ditto
                  clockwise:YES];
     [path closePath];
-    
+
+    if (self.failure) {
+        UIBezierPath *tickPath = [UIBezierPath bezierPath];
+        CGFloat tickWidth = radius/3;
+        [tickPath moveToPoint:CGPointMake(tickWidth, 0)];
+        [tickPath addLineToPoint:CGPointMake(tickWidth, tickWidth)];
+        [tickPath addLineToPoint:CGPointMake(0, tickWidth)];
+        [tickPath addLineToPoint:CGPointMake(0, tickWidth * 2)];
+        [tickPath addLineToPoint:CGPointMake(tickWidth, tickWidth * 2)];
+        [tickPath addLineToPoint:CGPointMake(tickWidth, tickWidth * 3)];
+        [tickPath addLineToPoint:CGPointMake(tickWidth * 2, tickWidth * 3)];
+        [tickPath addLineToPoint:CGPointMake(tickWidth * 2, tickWidth * 2)];
+        [tickPath addLineToPoint:CGPointMake(tickWidth * 3, tickWidth * 2)];
+        [tickPath addLineToPoint:CGPointMake(tickWidth * 3, tickWidth * 1)];
+        [tickPath addLineToPoint:CGPointMake(tickWidth * 2, tickWidth * 1)];
+        [tickPath addLineToPoint:CGPointMake(tickWidth * 2, 0)];
+        [tickPath closePath];
+
+        [tickPath applyTransform:CGAffineTransformMakeRotation(-M_PI_4)];
+
+        [tickPath applyTransform:CGAffineTransformMakeTranslation(radius * 0.3f, radius)];
+
+        CGFloat xOffset = rect.size.width/2 - radius;
+        CGFloat yOffset = rect.size.height/2 - radius;
+        [tickPath applyTransform:CGAffineTransformMakeTranslation(xOffset, yOffset)];
+
+        if (self.tickColor) {
+            [[self tickColor] setFill];
+            [tickPath fill];
+        }
+
+        [path appendPath:tickPath];
+    }
     // If progress is 1.0, show a tick mark in the centre of the circle
-    if ([self progress] == 1.0 && self.doneIconHidden == NO) {
+    else if ([self progress] == 1.0 && self.doneIconHidden == NO) {
         /* 
          First draw a tick that looks like this:
          
